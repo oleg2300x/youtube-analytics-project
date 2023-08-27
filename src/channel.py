@@ -1,7 +1,7 @@
-
 import os
 import json
 from googleapiclient.discovery import build
+
 
 class Channel:
     """Класс для ютуб-канала"""
@@ -18,6 +18,41 @@ class Channel:
         self.count_subscribers = self.channel["items"][0]["statistics"]["subscriberCount"]
         self.video_count = self.channel["items"][0]["statistics"]["videoCount"]
         self.count_views = self.channel["items"][0]["statistics"]["viewCount"]
+
+    def __str__(self):
+        return f"{self.title}({self.url})"
+
+    def __add__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) + int(other.count_subscribers)
+
+    def __sub__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) - int(other.count_subscribers)
+
+    def __mul__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) * int(other.count_subscribers)
+
+    def __truediv__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) / int(other.count_subscribers)
+
+    def __lt__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) < int(other.count_subscribers)
+
+    def __le__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) <= int(other.count_subscribers)
+
+    def __gt__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) > int(other.count_subscribers)
+
+    def __ge__(self, other: 'Channel') -> str:
+        if isinstance(other, Channel):
+            return int(self.count_subscribers) >= int(other.count_subscribers)
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
