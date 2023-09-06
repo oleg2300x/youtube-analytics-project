@@ -36,8 +36,6 @@ class PlayList:
             total_duration += timedelta_duration
         return total_duration
 
-    def show_best_video(self):
-        pass
 
     def printj(self):
         """Выводит словарь в json-подобном удобном формате с отступами"""
@@ -51,3 +49,6 @@ class PlayList:
                 best_video_id = video['id']
 
         return f"https://youtu.be/{best_video_id}"
+
+# You1 = PlayList('PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw')
+# print(You1.printj())
